@@ -1,16 +1,21 @@
 """
 This module implements the main functionality of tableshare.
-Author: BaiGuanba
+Author: Guanba
 """
 
 __author__ = "GuanBa"
 __email__ = "baiguanba@outlook.com"
 __status__ = "planning"
+
+
+from DrissionPage import ChromiumOptions
+from DrissionPage import WebPage
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-def fetch_all_table(url):
+
+def fetch_all_tables(url):
     """
     Extracts the specified table from a web page and converts it to a pandas DataFrame.
 
@@ -72,7 +77,7 @@ def fetch_all_table(url):
         print(f"请求或解析网页时发生错误: {e}")
 
 
-def fetch_table(url, table_index=0):
+def fetch_the_table(url, table_index=0):
     """
     Extracts the specified table from a web page and converts it to a pandas DataFrame.
 
@@ -135,7 +140,6 @@ def fetch_table(url, table_index=0):
         print(f"处理表格时发生错误: {e}")
 
 
-
 def fetch_all_tables_locally(html_file_path):
     """
     从指定的本地HTML文件中读取并打印所有表格数据。
@@ -167,8 +171,7 @@ def fetch_all_tables_locally(html_file_path):
             print("\n")
 
 
-
-def fetch_table_locally(html_file_path, table_index=0):
+def fetch_the_table_locally(html_file_path, table_index=0):
     """
     从指定的本地HTML文件中读取并返回指定索引的表格数据。
 
@@ -208,3 +211,138 @@ def fetch_table_locally(html_file_path, table_index=0):
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
+
+
+def fetch_all_dynamic_tables(url):
+    path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    ChromiumOptions().set_browser_path(path).save()
+    wp = WebPage()
+    wp.listen.start(url)  # 监听Json
+    # wp.get('https://www.zhipin.com/web/geek/job?query=PHP&city=101270100')
+    wp.get(url)
+
+    packet = wp.listen.wait()
+
+    # 假设 packet.response.body 包含了 HTML 内容
+    html_content = packet.response.body
+    try:
+
+        # 使用 BeautifulSoup 解析 HTML
+        soup = BeautifulSoup(html_content, 'lxml')
+
+        tables = soup.find_all('table')
+
+        if not tables:
+            print("没有找到任何table标签。")
+        else:
+            for i, table in enumerate(tables):
+                try:
+                    # 判断table是否为空
+                    if not table or not table.find_all('tr') or not table.find_all('th'):
+                        print(f"Table {i + 1}为空。")
+                        continue
+
+                    # 初始化一个空列表来存储数据
+                    data = []
+
+                    # 提取表头
+                    headers = []
+                    header_row = table.find('tr')
+                    if header_row:
+                        headers = [header.text.strip() for header in header_row.find_all('th')]
+
+                    # 提取表格数据
+                    for row in table.find_all('tr')[1:]:  # 跳过表头行
+                        cols = row.find_all('td')
+                        if cols:
+                            row_data = [col.text.strip() for col in cols]
+                            data.append(row_data)
+
+                    # 创建DataFrame
+                    df = pd.DataFrame(data, columns=headers)
+
+                    # 打印DataFrame的前几行，以验证数据是否正确
+                    print(f"Table {i + 1}:")
+                    print(df)
+                    print("\n")
+
+                except Exception as e:
+                    print(f"处理Table {i + 1}时发生错误: {e}")
+
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP错误: {e}")
+    except requests.exceptions.ConnectionError as e:
+        print(f"连接错误: {e}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求错误: {e}")
+    except Exception as e:
+        print(f"请求或解析网页时发生错误: {e}")
+
+
+def fetch_the_dynamic_table(url, table_index=0):
+    path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    ChromiumOptions().set_browser_path(path).save()
+    wp = WebPage()
+    wp.listen.start(url)  # 监听Json
+    # wp.get('https://www.zhipin.com/web/geek/job?query=PHP&city=101270100')
+    wp.get(url)
+
+    packet = wp.listen.wait()
+
+    # 假设 packet.response.body 包含了 HTML 内容
+    html_content = packet.response.body
+    try:
+
+        # 使用 BeautifulSoup 解析 HTML
+        soup = BeautifulSoup(html_content, 'lxml')
+
+        tables = soup.find_all('table')
+
+        if not tables:
+            print("没有找到任何table标签。")
+
+
+        else:
+            # 提取我们想要的表格
+            table = tables[table_index]  # 使用传入的索引
+
+
+            try:
+                # 判断table是否为空
+                if not table or not table.find_all('tr') or not table.find_all('th'):
+                    print(f"Table {table_index + 1}为空。")
+                # 初始化一个空列表来存储数据
+                data = []
+
+                # 提取表头
+                headers = []
+                header_row = table.find('tr')
+                if header_row:
+                    headers = [header.text.strip() for header in header_row.find_all('th')]
+
+                # 提取表格数据
+                for row in table.find_all('tr')[1:]:  # 跳过表头行
+                    cols = row.find_all('td')
+                    if cols:
+                        row_data = [col.text.strip() for col in cols]
+                        data.append(row_data)
+
+                # 创建DataFrame
+                df = pd.DataFrame(data, columns=headers)
+
+                # 打印DataFrame的前几行，以验证数据是否正确
+                print(f"Table {table_index + 1}:")
+                print(df)
+                print("\n")
+
+            except Exception as e:
+                print(f"处理Table {table_index + 1}时发生错误: {e}")
+
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP错误: {e}")
+    except requests.exceptions.ConnectionError as e:
+        print(f"连接错误: {e}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求错误: {e}")
+    except Exception as e:
+        print(f"请求或解析网页时发生错误: {e}")
