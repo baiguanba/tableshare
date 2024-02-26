@@ -8,30 +8,45 @@ You can install TableShare via pip:
 
 ```bash
 pip install tableshare
-Usage
-Scraping Tables from Online Resources
-import tableshare as ts
+```
 
-# Fetch all tables
+## Usage
+### Scraping Tables from Online Resources
+
+
+#### 1.Fetch all tables
+```python
+import tableshare as ts
 url = 'http://example.com/table-page' 
 df = ts.fetch_all_tables(url)
 print(df)
+```
 
-# Fetch a specific table
+#### 2.Fetch a specific table
+```python
+import tableshare as ts
 url = 'http://example.com/table-page' 
 df = ts.fetch_table(url, table_index=0)
 print(df)
-Scraping Tables from Local HTML Files
-# Fetch all tables from a local file
+```
+
+### Scraping Tables from Local HTML Files
+#### 1.Fetch all tables from a local file
+```python
+import tableshare as ts
 html_file_path = 'path_to_your_local_file.html'
 df = ts.fetch_all_tables_locally(html_file_path)
 print(df)
+```
 
-# Fetch a specific table from a local file
+#### 2.Fetch a specific table from a local file
+```python
+import tableshare as ts
 html_file_path = 'path_to_your_local_file.html'
 df = ts.fetch_table_locally(html_file_path, table_index=0)
 print(df)
 ```
+
 ## Features
 Scrape single or multiple tables from web pages.
 Scrape single or multiple tables from local HTML files.
