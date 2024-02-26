@@ -214,7 +214,8 @@ def fetch_the_table_locally(html_file_path, table_index=0):
 
 
 def fetch_all_dynamic_tables(url):
-    path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    # path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    path = r'"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"'   # 请改为你电脑内Edge可执行文件路径
     ChromiumOptions().set_browser_path(path).save()
     wp = WebPage()
     wp.listen.start(url)  # 监听Json
@@ -280,7 +281,8 @@ def fetch_all_dynamic_tables(url):
 
 
 def fetch_the_dynamic_table(url, table_index=0):
-    path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    # path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'  # 请改为你电脑内Chrome可执行文件路径
+    path = r'"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"'   # 请改为你电脑内Edge可执行文件路径
     ChromiumOptions().set_browser_path(path).save()
     wp = WebPage()
     wp.listen.start(url)  # 监听Json

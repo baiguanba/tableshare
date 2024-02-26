@@ -1,6 +1,6 @@
 
 from setuptools import setup, find_packages
-VERSION = '1.0.3'
+VERSION = '1.0.4'
 DESCRIPTION = 'A Python library for scraping and sharing table data from web pages.'
 
 setup(
