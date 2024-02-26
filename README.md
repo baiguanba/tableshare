@@ -28,7 +28,7 @@ print(df)
 ```python
 import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.fetch_table(url, table_index=0)
+df = ts.fetch_the_table(url, table_index=0)
 print(df)
 ```
 
@@ -45,7 +45,24 @@ print(df)
 ```python
 import tableshare as ts
 html_file_path = 'path_to_your_local_file.html'
-df = ts.fetch_table_locally(html_file_path, table_index=0)
+df = ts.fetch_the_table_locally(html_file_path, table_index=0)
+print(df)
+```
+
+### Scraping Dynamic Tables from Online Resources
+#### 1.Fetch all dynamic tables online
+```python
+import tableshare as ts
+url = 'http://example.com/table-page' 
+df = ts.fetch_all_dynamic_tables(url)
+print(df)
+```
+
+#### 2.Fetch the dynamic table online
+```python
+import tableshare as ts
+url = 'http://example.com/table-page' 
+df = ts.fetch_the_dynamic_table(url, table_index=0)
 print(df)
 ```
 
