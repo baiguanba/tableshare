@@ -31,13 +31,13 @@ def fetch_all_tables(url):
         tables = soup.find_all('table')
 
         if not tables:
-            print("没有找到任何table标签。")
+            print("没有找到任何table标签，两种可能：一是网站本身就没有table标签；二是网站的table可能是动态加载数据，可以尝试使用fetch_all_dynamic_tables方法，或将网页保存至本地并使用fetch_all_tables_locally方法。")
         else:
             for i, table in enumerate(tables):
                 try:
                     # 判断table是否为空
                     if not table or not table.find_all('tr') or not table.find_all('th'):
-                        print(f"Table {i+1}为空。")
+                        print(f"Table{i+1}为空，两种可能：一是table本身就没有数据；二是网站的table可能是动态加载数据，可以尝试使用fetch_all_dynamic_tables方法，或将网页保存至本地并使用fetch_all_tables_locally方法。")
                         continue
 
                     # 初始化一个空列表来存储数据
@@ -97,7 +97,7 @@ def fetch_the_table(url, table_index=0):
         tables = soup.find_all('table')
 
         if not tables:  # 如果table为空或者没有tr标签
-            print("没有找到任何table标签，两种可能：一是网站本身就没有table标签；二是网站的table可能是动态加载数据，请将网页保存至本地并使用XXX方法。")
+            print("没有找到任何table标签，两种可能：一是网站本身就没有table标签；二是网站的table可能是动态加载数据，可以尝试使用fetch_the_dynamic_table方法，或将网页保存至本地并使用fetch_the_table_locally方法。")
 
         else:
             # 提取我们想要的表格
@@ -105,7 +105,7 @@ def fetch_the_table(url, table_index=0):
 
             # 判断table是否为空
             if not table or not table.find_all('tr') or not table.find_all('th'):  # 如果table为空或者没有tr标签
-                print("Table为空，两种可能：一是table本身就没有数据；二是网站的table可能是动态加载数据，请将网页保存至本地并使用XXX方法。")
+                print(f"Table{table_index+1}为空，两种可能：一是table本身就没有数据；二是网站的table可能是动态加载数据，可以尝试使用fetch_the_dynamic_table方法，或将网页保存至本地并使用fetch_the_table_locally方法。")
             else:
                 # 初始化一个空列表来存储数据
                 data = []
@@ -234,13 +234,13 @@ def fetch_all_dynamic_tables(url):
         tables = soup.find_all('table')
 
         if not tables:
-            print("没有找到任何table标签。")
+            print("没有找到任何table标签，说明网站本身就没有table标签。")
         else:
             for i, table in enumerate(tables):
                 try:
                     # 判断table是否为空
                     if not table or not table.find_all('tr') or not table.find_all('th'):
-                        print(f"Table {i + 1}为空。")
+                        print(f"Table{i + 1}为空，说明table本身就没有数据。")
                         continue
 
                     # 初始化一个空列表来存储数据
@@ -301,7 +301,7 @@ def fetch_the_dynamic_table(url, table_index=0):
         tables = soup.find_all('table')
 
         if not tables:
-            print("没有找到任何table标签。")
+            print("没有找到任何table标签，说明网站本身就没有table标签。")
 
 
         else:
@@ -312,7 +312,7 @@ def fetch_the_dynamic_table(url, table_index=0):
             try:
                 # 判断table是否为空
                 if not table or not table.find_all('tr') or not table.find_all('th'):
-                    print(f"Table {table_index + 1}为空。")
+                    print(f"Table{table_index + 1}为空，说明table本身就没有数据。")
                 # 初始化一个空列表来存储数据
                 data = []
 
