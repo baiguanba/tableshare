@@ -1,5 +1,7 @@
 # TableShare
 
+[![PyPI Package](https://img.shields.io/pypi/v/tableshare.svg)](https://pypi.org/project/tableshare/)
+
 TableShare is a lightweight Python library for extracting table data from web pages and converting it into pandas DataFrame. It supports scraping tables from online resources and local HTML files.
 
 ## Installation
@@ -68,6 +70,8 @@ If you have any questions or need assistance, please contact us via:
 Email: baiguanba@outlook.com
 
 GitHub Repository: https://github.com/baiguanba/tableshare
+
+PyPI Package: https://pypi.org/project/tableshare/
 
 ## Support
 If you find TableShare useful and would like to support its development, please consider starring the repository on GitHub.
