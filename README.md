@@ -16,53 +16,53 @@ pip install tableshare
 ### Scraping Tables from Online Resources
 
 
-#### 1.Fetch all tables
+#### 1.get all tables
 ```python
 import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.fetch_all_tables(url)
+df = ts.get_all_tables(url)
 print(df)
 ```
 
-#### 2.Fetch a specific table
+#### 2.get a specific table
 ```python
 import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.fetch_the_table(url, table_index=0)
+df = ts.get_the_table(url, table_index=0)
 print(df)
 ```
 
 ### Scraping Tables from Local HTML Files
-#### 1.Fetch all tables from a local file
+#### 1.get all tables from a local file
 ```python
 import tableshare as ts
 html_file_path = 'path_to_your_local_file.html'
-df = ts.fetch_all_tables_locally(html_file_path)
+df = ts.get_all_tables_locally(html_file_path)
 print(df)
 ```
 
-#### 2.Fetch a specific table from a local file
+#### 2.get a specific table from a local file
 ```python
 import tableshare as ts
 html_file_path = 'path_to_your_local_file.html'
-df = ts.fetch_the_table_locally(html_file_path, table_index=0)
+df = ts.get_the_table_locally(html_file_path, table_index=0)
 print(df)
 ```
 
 ### Scraping Dynamic Tables from Online Resources
-#### 1.Fetch all dynamic tables online
+#### 1.get all dynamic tables online
 ```python
 import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.fetch_all_dynamic_tables(url)
+df = ts.get_all_dynamic_tables(url)
 print(df)
 ```
 
-#### 2.Fetch the dynamic table online
+#### 2.get the dynamic table online
 ```python
 import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.fetch_the_dynamic_table(url, table_index=0)
+df = ts.get_the_dynamic_table(url, table_index=0)
 print(df)
 ```
 
