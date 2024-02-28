@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: tableshare
+Version: 1.0.8
+Summary: A Python library for scraping and sharing table data from web pages.
+Home-page: https://github.com/baiguanba/tableshare
+Author: Guanba
+Author-email: baiguanba@outlook.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/baiguanba/tableshare/issues
+Keywords: python,table,webtable,scrawler
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
