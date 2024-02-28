@@ -122,7 +122,7 @@ class TableScraper:
             print("table_index 应为非负整数。")
             return
         elif not tables:
-            print("未找到任何表格（没有找到任何table标签）。两种可能：一是网站本身就没有任何table标签；二是网站的table可能是动态加载数据，可以尝试将参数调成dynamic=True，或将网页保存至本地并使用get_the_table_locally方法。")
+            print("未找到任何表格（没有找到任何table标签）。两种可能：一是网站本身就没有任何table标签；二是网站的table可能是动态加载数据，可以尝试将参数调成dynamic=True。")
             return
 
         elif table_index >= len(tables):
@@ -148,7 +148,7 @@ class TableScraper:
 
         if not tables:
             print(
-                "未找到任何表格（没有找到任何table标签）。两种可能：一是网站本身就没有任何table标签；二是网站的table可能是动态加载数据，可以尝试将参数调成dynamic=True，或将网页保存至本地并使用get_the_table_locally方法。")
+                "未找到任何表格（没有找到任何table标签）。两种可能：一是网站本身就没有任何table标签；二是网站的table可能是动态加载数据，可以尝试将参数调成dynamic=True。")
             return
         else:
             for i, table in enumerate(tables):
