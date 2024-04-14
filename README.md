@@ -13,39 +13,39 @@ pip install tableshare
 ```
 
 ## Usage
-### Scraping Tables from Online Resources
+### 获取静态网站数据
 
 
-#### 1.show all tables
+#### 1.展示所有静态网页数据表show all tables
 ```python
-from tableshare import TableScraper as ts
+import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.show_all_tables(url)
+df = ts.show_all_tables(url) # 默认参数dynamic是false
 print(df)
 ```
 
-#### 2.get a specific table
+#### 2.获取静态网页指定序号数据表get a specific table
 ```python
-from tableshare import TableScraper as ts
+import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.get_the_table(url)
+df = ts.get_the_table(url,0) # 以0为例，0是table序列号
 print(df)
 ```
 
-### Scraping Dynamic Tables from Online Resources
-#### 1.show all dynamic tables online
+### 获取动态网站数据
+#### 1.展示所有动态网页数据表show all dynamic tables online
 ```python
-from tableshare import TableScraper as ts
+import tableshare as ts
 url = 'http://example.com/table-page' 
 df = ts.show_all_tables(url, dynamic=True)
 print(df)
 ```
 
-#### 2.get the dynamic table online
+#### 2.获取所有动态网页数据表get the dynamic table online
 ```python
-from tableshare import TableScraper as ts
+import tableshare as ts
 url = 'http://example.com/table-page' 
-df = ts.get_the_table(url, dynamic=True)
+df = ts.get_the_table(url, 0, dynamic=True) # 以0为例，0是table序列号
 print(df)
 ```
 

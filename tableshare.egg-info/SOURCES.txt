@@ -1,8 +1,10 @@
 LICENSE
 README.md
 setup.py
+tableshare/__init__.py
 tableshare.egg-info/PKG-INFO
 tableshare.egg-info/SOURCES.txt
 tableshare.egg-info/dependency_links.txt
 tableshare.egg-info/requires.txt
 tableshare.egg-info/top_level.txt
+tableshare/crawltable/__init__.py

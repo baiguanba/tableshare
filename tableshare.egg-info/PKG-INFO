@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tableshare
-Version: 1.0.8
+Version: 1.1.5
 Summary: A Python library for scraping and sharing table data from web pages.
 Home-page: https://github.com/baiguanba/tableshare
 Author: Guanba
